@@ -1,5 +1,14 @@
 const gridContainer = document.querySelector("#gridContainer");
 const gridSize = document.querySelector("#gridSize");
+const containerButtons = document.querySelector("containerButtons");
+const buttonGreen = document.querySelector("#green");
+const buttonRed = document.querySelector("#red");
+const buttonBlue = document.querySelector("#blue");
+
+const colorGreen = "#00FF00";
+const colorRed = "#ff0000";
+const colorBlue = "#0000ff";
+let backGroundColor;
 
 const gridArea = 600;
 let numDivs = 16;
@@ -9,25 +18,17 @@ gridContainer.style.width = `${gridArea}px`;
 gridContainer.style.height = `${gridArea}px`;
 gridContainer.style.backgroundColor = `coral`;
 
-function createGrid(){
-    let fullAmountDivs = (numDivs * numDivs);
-    const widthDiv = gridArea / numDivs;
-    const heightDiv = gridArea / numDivs;
+buttonGreen.addEventListener("click", (event) => {
+    backGroundColor = colorGreen;
+});
 
-    for(i = 0; i < (fullAmountDivs); i++){
-        const div = document.createElement("div");
-        div.style.width = `${widthDiv}px`;
-        div.style.height = `${heightDiv}px`;
-        div.style.border = "1px solid black";
-        gridContainer.appendChild(div);
+buttonRed.addEventListener("click", (event) => {
+    backGroundColor = colorRed;
+});
 
-        div.addEventListener("mouseover", (event) => {
-            event.target.style.backgroundColor = "blue";
-        })
-    }
-}
-
-createGrid();
+buttonBlue.addEventListener("click", (event) => {
+    backGroundColor = colorBlue;
+});
 
 gridSize.addEventListener("click", (event) => {
     const newGridSize = prompt("Enter a number, this number represents the amount of squares you will have to draw:");
@@ -39,7 +40,27 @@ gridSize.addEventListener("click", (event) => {
         deleteGrid();
         createGrid();
     }
-})
+});
+
+function createGrid(){
+    let fullAmountDivs = (numDivs * numDivs);
+    const widthDiv = gridArea / numDivs;
+    const heightDiv = gridArea / numDivs;
+
+    for(i = 0; i < (fullAmountDivs); i++){
+        const div = document.createElement("div");
+        div.style.width = `${widthDiv}px`;
+        div.style.height = `${heightDiv}px`;
+        //div.style.border = "1px solid black";
+        gridContainer.appendChild(div);
+
+        div.addEventListener("mouseover", (event) => {
+            event.target.style.backgroundColor = backGroundColor;
+        })
+    }
+}
+
+createGrid();
 
 function deleteGrid(){
     let child = gridContainer.lastChild;
