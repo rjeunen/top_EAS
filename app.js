@@ -1,17 +1,20 @@
 const gridContainer = document.querySelector("#gridContainer");
+const gridSize = document.querySelector("#gridSize");
 
 const gridArea = 600;
-const rows = 16;
-const cols = 16;
-const widthDiv = gridArea / rows;
-const heightDiv = gridArea / cols;
+let numDivs = 16;
+
 
 gridContainer.style.width = `${gridArea}px`;
 gridContainer.style.height = `${gridArea}px`;
 gridContainer.style.backgroundColor = `coral`;
 
 function createGrid(){
-    for(i = 0; i < (rows * cols); i++){
+    let fullAmountDivs = (numDivs * numDivs);
+    const widthDiv = gridArea / numDivs;
+    const heightDiv = gridArea / numDivs;
+
+    for(i = 0; i < (fullAmountDivs); i++){
         const div = document.createElement("div");
         div.style.width = `${widthDiv}px`;
         div.style.height = `${heightDiv}px`;
@@ -25,3 +28,25 @@ function createGrid(){
 }
 
 createGrid();
+
+gridSize.addEventListener("click", (event) => {
+    const newGridSize = prompt("Enter a number, this number represents the amount of squares you will have to draw:");
+    if(newGridSize > 100){
+        const errorMessage = document.createElement("p");
+        errorMessage.textContent = "You can not enter an number over 100, please try again";
+        document.body.appendChild(errorMessage);
+    }
+    else{
+        numDivs = newGridSize;
+        deleteGrid();
+        createGrid();
+    }
+})
+
+function deleteGrid(){
+    let child = gridContainer.lastChild;
+    while(child){
+        gridContainer.removeChild(child);
+        child = gridContainer.lastChild;
+    }
+}
