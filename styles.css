@@ -20,7 +20,7 @@ h1{
 #gridContainer{
     width: 100%;;
     margin: auto;
-    
+    border: 1px solid black;
     display: flex;
     flex-wrap: wrap;
     margin-bottom: 25px;
