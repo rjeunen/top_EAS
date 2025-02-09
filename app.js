@@ -17,6 +17,10 @@ function createGrid(){
         div.style.height = `${heightDiv}px`;
         div.style.border = "1px solid black";
         gridContainer.appendChild(div);
+
+        div.addEventListener("mouseover", (event) => {
+            event.target.style.backgroundColor = "blue";
+        })
     }
 }
 
