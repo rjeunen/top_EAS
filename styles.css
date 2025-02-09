@@ -3,8 +3,16 @@
     padding: 0;
     box-sizing: border-box;
 }
+h1{
+    text-align: center;
+    margin-top: 25px;
+    margin-bottom: 25px;
+}
 
 #gridContainer{
+    width: 100%;;
+    margin: auto;
+    
     display: flex;
     flex-wrap: wrap;
 }
