@@ -32,9 +32,7 @@ createGrid();
 gridSize.addEventListener("click", (event) => {
     const newGridSize = prompt("Enter a number, this number represents the amount of squares you will have to draw:");
     if(newGridSize > 100){
-        const errorMessage = document.createElement("p");
-        errorMessage.textContent = "You can not enter an number over 100, please try again";
-        document.body.appendChild(errorMessage);
+        alert("You can not enter an number over 100, please try again");
     }
     else{
         numDivs = newGridSize;
